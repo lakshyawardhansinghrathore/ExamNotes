@@ -57,7 +57,7 @@ function Home() {
                 scale: 1.07
               }}
               whileTap={{ scale: 0.97 }}
-              transition={{ type: "spring", stiffness: 200, damping: 18 }}
+              
               className='mt-10 px-10 py-3 rounded-xl
                         flex items-center gap-3
                         bg-gradient-to-br from-black/90 via-black/90 to-black/90
