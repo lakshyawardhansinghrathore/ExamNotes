@@ -1,5 +1,6 @@
 import React from 'react'
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
+import { generateNotes } from "../services/api";
 
 function TopicForm({ setResult, setLoading, loading, setError }) {
   const [topic, setTopic] = React.useState("");
@@ -8,6 +9,32 @@ function TopicForm({ setResult, setLoading, loading, setError }) {
   const [revisionMode, setRevisionMode] = React.useState(false);
   const [includeDiagrams, setIncludeDiagrams] = React.useState(false);
   const [includeChart, setIncludeChart] = React.useState(false);
+
+  const handleSubmit = async () => {
+  if (!topic.trim()) {
+    setError("Please enter the topic")
+    return;
+  }
+  setError("")
+  setLoading(true)
+  setResult(null)
+  try {
+
+    const result =  await generateNotes({topic,
+      classLevel,
+      examType,
+      revisionMode,
+      includeDiagram: includeDiagrams,
+      includeChart})
+      setResult(result.data)
+      setLoading(false)
+
+  } catch (error) {
+    console.error(error)
+    setError("Failed to fetch notes from server");
+    setLoading(false)
+  }
+}
 
   return (
     <motion.div
@@ -77,6 +104,7 @@ function TopicForm({ setResult, setLoading, loading, setError }) {
 
 
       <motion.button
+      onClick={handleSubmit}
         whileHover={!loading ? { scale: 1.02 } : {}}
         whileTap={!loading ? { scale: 0.95 } : {}}
         disabled={loading}
