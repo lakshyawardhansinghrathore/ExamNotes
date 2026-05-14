@@ -50,7 +50,11 @@ function Home() {
 
             </motion.p>
 
-            <motion.button
+            
+
+          </motion.div>
+
+          <motion.button
               onClick={() => navigate("/notes")}
               whileHover={{
                 
@@ -68,8 +72,6 @@ function Home() {
 
               Get Started
             </motion.button>
-
-          </motion.div>
         </div>
 
         <motion.div
