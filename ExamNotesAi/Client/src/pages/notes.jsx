@@ -3,6 +3,9 @@ import { motion } from "framer-motion";
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import TopicForm from '../components/TopicForm';
+import Sidebar from '../components/Sidebar'; 
+import FinalResult from '../components/FinalResult';
+
 
 function Notes() {
   const navigate = useNavigate();
@@ -72,6 +75,22 @@ function Notes() {
         <TopicForm loading={loading} setResult={setResult} setLoading={setLoading} setError={setError} />
       </motion.div>
 
+      {loading && (
+        <motion.div
+          animate={{ opacity: [0.4, 1, 0.4] }}
+          transition={{ repeat: Infinity, duration: 1.2 }}
+          className="text-center text-black font-medium mb-6"
+        >
+          Generating exam-focused notes...
+        </motion.div>
+      )}
+
+      {error && (
+        <div className="mb-6 text-center text-red-600 font-medium">
+          {error}
+        </div>
+      )}
+
       {!result && (
         <motion.div
           whileHover={{ scale: 1.02 }}
@@ -92,6 +111,24 @@ function Notes() {
           </p>
         </motion.div>
       )}
+
+      {result && <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4 }}
+        className='flex flex-col lg:grid lg:grid-cols-4 gap-6'>
+
+        <div className='lg:col-span-1'>
+          <Sidebar result={result.data || result} /> 
+        </div>
+
+        <div className='lg:col-span-3 rounded-2xl bg-white shadow-[0_15px_40px_rgba(0,0,0,0.15)] p-6'>
+
+          <FinalResult result={result.data || result} /> 
+        </div>
+
+      </motion.div>}
+
 
     </div>
   )
