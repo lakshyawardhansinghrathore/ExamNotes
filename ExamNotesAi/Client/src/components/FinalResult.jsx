@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ReactMarkdown from 'react-markdown';
 import MermaidSetup from './MermaidSetup';
 import RechartSetUp from './RechartSetUp';
+import { downloadPdf } from '../services/api.js';
 
 const markDownComponent = {
   h1: ({ children }) => (
@@ -36,6 +37,7 @@ const markDownComponent = {
 
 function FinalResult({ result }) {
   const [quickRevision, setQuickRevision] = React.useState(false);
+  const [isDownloading, setIsDownloading] = useState(false);
 
   if (
     !result ||
@@ -47,6 +49,18 @@ function FinalResult({ result }) {
   ) {
     return null;
   }
+
+  const handleDownloadPDF = async () => {
+    try {
+      setIsDownloading(true);
+      await downloadPdf(result); 
+    } catch (error) {
+      console.error("Error downloading PDF:", error);
+      alert("Failed to download PDF. Please try again.");
+    } finally {
+      setIsDownloading(false);
+    }
+  };
 
   return (
     <div className='mt-6 p-3 space-y-10 bg-white'>
@@ -64,7 +78,9 @@ function FinalResult({ result }) {
               : "bg-green-100 text-green-700 hover:bg-green-200"}
           `}> {quickRevision ? "Exit Revision Mode" : "Quick Revision (5 min)"}</button>
 
-          <button className='px-4 py-2 rounded-lg text-sm font-medium bg-indigo-600 text-white hover:bg-indigo-700'>
+          <button
+            onClick={() => downloadPdf(result)}
+            className='px-4 py-2 rounded-lg text-sm font-medium bg-indigo-600 text-white hover:bg-indigo-700'>
             ⬇️ Download PDF
           </button>
         </div>
