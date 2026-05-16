@@ -9,7 +9,7 @@ import Notes from './pages/Notes'
 import Pricing from './pages/Pricing'
 import PaymentSuccess from './pages/PaymentSuccess' 
 
-export const serverUrl = "http://localhost:8000"
+export const serverUrl = "https://noteforge-aiserver.onrender.com"
 
 
 function PaymentFailed() {
