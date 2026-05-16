@@ -1,16 +1,16 @@
-import React from 'react'
+import React from 'react';
+// 👇 Notice there is only ONE import from recharts now!
 import { 
     ResponsiveContainer, 
     BarChart, Bar, 
     LineChart, Line, 
     PieChart, Pie, 
     XAxis, YAxis, Tooltip, Cell 
-} from 'recharts'
+} from 'recharts';
 
 function RechartSetUp({ charts }) {
     if (!charts || charts.length === 0) return null;
     
-    // Fixed the typo in the first hex code
     const COLORS = ["#6366f1", "#22c55e", "#f59e0b", "#ef4444", "#06b6d4"];
     
     return (
@@ -74,4 +74,4 @@ function RechartSetUp({ charts }) {
     )
 }
 
-export default RechartSetUp
+export default RechartSetUp;
