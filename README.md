@@ -1,4 +1,3 @@
-```markdown
 # 🧠 NoteForge AI
 
 > **Create Smart AI Notes in Seconds.**
