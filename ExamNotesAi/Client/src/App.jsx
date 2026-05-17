@@ -5,7 +5,7 @@ import Auth from './pages/Auth'
 import { getCurrentUser } from './services/api'
 import { useDispatch, useSelector } from 'react-redux'
 import History from './pages/History'
-import Notes from './pages/Notes'
+import Notes from './pages/notes'
 import Pricing from './pages/Pricing'
 import PaymentSuccess from './pages/PaymentSuccess' 
 
