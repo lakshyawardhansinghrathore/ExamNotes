@@ -1,5 +1,16 @@
 # 🧠 NoteForge AI
 
+## Meaning Behind NoteForgeAI
+
+**NoteForgeAI** combines three powerful ideas:
+
+- **Note** → ideas, lectures, meetings, research, thoughts, and study material  
+- **Forge** → to create, shape, refine, and build something valuable  
+- **AI** → intelligent automation and smart assistance
+-  Together, the name represents:
+
+> **“An AI that forges raw information into smart, structured notes.”**
+
 > **Create Smart AI Notes in Seconds.**
 > Generate exam-focused notes, project documents, flow diagrams, and revision-ready content using AI—faster, cleaner, and more efficient than ever before.
 
